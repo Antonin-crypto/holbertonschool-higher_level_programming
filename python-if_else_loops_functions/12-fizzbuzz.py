@@ -10,6 +10,3 @@ def fizzbuzz():
             print("Fizz ", end=" ")
         else:
             print("{}".format(int(i)), end=" ")
-
-fizzbuzz()
-print("")
