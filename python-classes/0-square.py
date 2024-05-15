@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-class square():
+class Square():
     """reprensente the square"""
     def __init__(self) -> None:
         pass
