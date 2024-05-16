@@ -2,7 +2,7 @@
 """contient the code python"""
 
 
-class Square():
+class Square:
     """contient the class of python"""
     # isinstance(objet, type) function returns True if the specified object
     # is of the specified type, otherwise False
