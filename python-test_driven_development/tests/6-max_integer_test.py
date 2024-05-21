@@ -3,6 +3,7 @@
 import unittest
 max_integer = __import__('6-max_integer').max_integer
 
+
 class TestMaxInteger(unittest.TestCase):
     """Unittests for max_integer()"""
 
@@ -54,5 +55,3 @@ class TestMaxInteger(unittest.TestCase):
         self.assertTrue(len(test_copy) == len(test_list))
         for i in range(len(test_copy)):
             self.assertTrue(test_copy[i] == test_list[i])
-
-
