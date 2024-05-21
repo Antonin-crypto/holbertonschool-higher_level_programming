@@ -1,7 +1,7 @@
 #!/usr/bin/python3
-"""defin code python"""
+"""Defines a Python class """
 
 
 class Rectangle:
-    """contient the Classe square"""
+    """Represents a rectangle with width and height attributes"""
     pass
