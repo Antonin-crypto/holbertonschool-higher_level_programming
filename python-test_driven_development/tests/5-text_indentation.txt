@@ -1,0 +1,67 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+>>> text_indentation("bonjour.")
+bonjour.
+<BLANKLINE>
+
+>>> text_indentation(":")
+:
+<BLANKLINE>
+
+>>> text_indentation("?")
+?
+<BLANKLINE>
+
+>>> text_indentation(".")
+.
+<BLANKLINE>
+
+>>> text_indentation("Marc")
+Marc
+
+>>> text_indentation({})
+Traceback (most recent call last):
+TypeError: text must be a string
+
+>>> text_indentation([])
+Traceback (most recent call last):
+TypeError: text must be a string
+
+
+>>> text_indentation("*    DONT   ?!    REMOVE    :@     SPACE   .!      %")
+*    DONT   ?
+<BLANKLINE>
+!    REMOVE    :
+<BLANKLINE>
+@     SPACE   .
+<BLANKLINE>
+!      %
+
+
+>>> text_indentation("    REMOVE?    ALL:      SPACE.       ")
+REMOVE?
+<BLANKLINE>
+ALL:
+<BLANKLINE>
+SPACE.
+<BLANKLINE>
+
+>>> text_indentation("?:.")
+?
+<BLANKLINE>
+:
+<BLANKLINE>
+.
+<BLANKLINE>
+
+>>> text_indentation("    ?    ")
+?
+<BLANKLINE>
+
+>>> text_indentation("Far        ?    ")
+Far        ?
+<BLANKLINE>
+
+>>> text_indentation("     IN SPACE     :")
+IN SPACE     :
+<BLANKLINE>
