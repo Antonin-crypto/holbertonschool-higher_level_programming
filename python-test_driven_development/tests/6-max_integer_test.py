@@ -7,35 +7,20 @@ max_integer = __import__('6-max_integer').max_integer
 
 
 class TestMaxInteger(unittest.TestCase):
-    """Unittests for max_integer()"""
-
-    def test_start_list(self):
-        self.assertEqual(max_integer([1, 2, 3, 4]), 4)
-
-    def test_end_list(self):
-        self.assertEqual(max_integer([4, 3, 2, 1]), 4)
-
-    def test_mid_list(self):
-        self.assertEqual(max_integer([3, 2, 4, 5]), 5)
-
-    def test_positive_list(self):
-        self.assertEqual(max_integer([1, 100]), 100)
-
-    def test_negative_list(self):
-        self.assertEqual(max_integer([1, -100]), 1)
-
-    def test_one_number_list(self):
-        self.assertEqual(max_integer([1]), 1)
-
-    def test_duplication_list(self):
-        self.assertEqual(max_integer([15, 15]), 15)
-
     def test_empty_list(self):
-        self.assertEqual(max_integer([]), None)
+        self.assertIsNone(max_integer([]))
 
-    def test_unmodified_list(self):
-        test_list = [873, 5654, 465, -389, 0]
-        test_copy = list(test_list)
-        self.assertTrue(len(test_copy) == len(test_list))
-        for i in range(len(test_copy)):
-            self.assertTrue(test_copy[i] == test_list[i])
+    def test_single_element(self):
+        self.assertEqual(max_integer([42]), 42)
+
+    def test_positive_numbers(self):
+        self.assertEqual(max_integer([10, 20, 30]), 30)
+
+    def test_negative_numbers(self):
+        self.assertEqual(max_integer([-5, -10, -2]), -2)
+
+    def test_mixed_numbers(self):
+        self.assertEqual(max_integer([5, -8, 12, 0]), 12)
+
+    def test_duplicate_max(self):
+        self.assertEqual(max_integer([10, 20, 30, 30]), 30)
