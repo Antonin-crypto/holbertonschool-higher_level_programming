@@ -25,24 +25,6 @@ class TestMaxInteger(unittest.TestCase):
     def test_one_number_list(self):
         self.assertEqual(max_integer([1]), 1)
 
-    def test_not_start_list(self):
-        self.assertNotEqual(max_integer([1, 2, 3, 4]), 1)
-
-    def test_not_end_list(self):
-        self.assertNotEqual(max_integer([4, 3, 2, 1]), 1)
-
-    def test_not_mid_list(self):
-        self.assertNotEqual(max_integer([3, 2, 4, 5]), 4)
-
-    def test_not_positive_list(self):
-        self.assertNotEqual(max_integer([1, 100]), 1)
-
-    def test_not_negative_list(self):
-        self.assertNotEqual(max_integer([1, -100]), -100)
-
-    def test_not_one_number_list(self):
-        self.assertNotEqual(max_integer([1]), 0)
-
     def test_duplication_list(self):
         self.assertEqual(max_integer([15, 15]), 15)
 
