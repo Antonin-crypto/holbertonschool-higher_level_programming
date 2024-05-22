@@ -49,3 +49,21 @@
 >>> my_list.append(1)
 >>> my_list.print_sorted()
 [1, 2, 3, 4, 5, 5]
+
+>>> my_list = MyList(6)
+Traceback (most recent call last):
+...
+TypeError: 'int' object is not iterable
+
+>>> my_list = MyList(6, 2)
+Traceback (most recent call last):
+...
+TypeError: list expected at most 1 argument, got 2
+
+
+>>> my_list.append('A')
+>>> my_list.append('Z')
+>>> my_list.print_sorted()
+Traceback (most recent call last):
+...
+TypeError: not all the elements type int
