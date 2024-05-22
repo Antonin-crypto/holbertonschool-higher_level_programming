@@ -9,5 +9,4 @@ class MyList(list):
         for element in self:
             if not isinstance(element, int):
                 raise TypeError("not all the elements type int")
-        sorted_list = sorted(self)
-        print(sorted_list)
+        print(sorted(self))
