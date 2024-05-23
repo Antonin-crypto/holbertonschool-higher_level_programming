@@ -1,25 +1,21 @@
 #!/usr/bin/env python3
+"""Create a class named VerboseList that extends the Python list"""
 
 class VerboseList(list):
     def append(self, item):
         super().append(item)
-        print("Added {} to the list.".format([item]))
+        print(f"Added [{item}] to the list.")
 
     def extend(self, iterable):
-        super().extend(iterable)
         num_items = len(iterable)
-        print("Extended the list with {} items.".format([num_items]))
+        super().extend(iterable)
+        print(f"Extended the list with [{num_items}] items.")
 
     def remove(self, item):
-        try:
-            super().remove(item)
-            print("Removed {} from the list.".format([item]))
-        except ValueError:
-            print("{} not found in the list.".format([item]))
+        print(f"Removed [{item}] from the list.")
+        super().remove(item)
 
-    def pop(self, index=None):
-        if index is None:
-            item = super().pop()
-        else:
-            item = super().pop(index)
-        print("Popped {} from the list.".format([item]))
+    def pop(self, index=-1):
+        item = super().pop(index)
+        print(f"Popped [{item}] from the list.")
+        return item
