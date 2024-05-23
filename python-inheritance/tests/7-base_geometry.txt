@@ -27,3 +27,34 @@ ValueError: distance must be greater than 0
 Traceback (most recent call last):
 ...
 Exception: area() is not implemented
+
+>>> class CustomGeometry(BaseGeometry):
+...     pass
+...
+>>> cg = CustomGeometry()
+>>> cg.area()
+Traceback (most recent call last):
+...
+Exception: area() is not implemented
+
+>>> class Square(BaseGeometry):
+...     def __init__(self, size):
+...         self.integer_validator("size", size)
+...         self.__size = size
+...     def area(self):
+...         return self.__size * self.__size
+...
+>>> s = Square(5)
+>>> s.area()
+25
+
+>>> s = Square(-5)
+Traceback (most recent call last):
+...
+ValueError: size must be greater than 0
+
+>>> s = Square("five")
+Traceback (most recent call last):
+...
+TypeError: size must be an integer
+
