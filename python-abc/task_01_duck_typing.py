@@ -36,9 +36,9 @@ class Rectangle(Shape):
         return 2 * (self.width + self.height)
 
 # Step 3: Define the shape_info function
-def shape_info(shape):
-    print("Area: {}".format(shape.area()))
-    print("Perimeter: {}".format(shape.perimeter()))
+    def shape_info(shape):
+        print("Area: {}".format(shape.area()))
+        print("Perimeter: {}".format(shape.perimeter()))
 
 # Test cases
 if __name__ == "__main__":
