@@ -1,0 +1,101 @@
+## Résumé des différences entre HTTP et HTTPS
+
+## HTTP
+
+- 1.Nom complet: Hypertext Transfer Protocol
+- 2.Sécurité: Pas de chiffrement, ce qui signifie que les données sont envoyées en texte clair et peuvent être interceptées par quiconque a accès au chemin des données.
+- 3.Utilisation courante: Typiquement utilisé pour les sites web qui ne traitent pas d'informations sensibles.
+
+## HTTPS
+
+- 1.Nom complet: Hypertext Transfer Protocol Secure
+- 2.Sécurité: Utilise le chiffrement SSL/TLS pour sécuriser le transfert de données, rendant le contenu illisible pour les espions.
+- 3.Utilisation courante: Essentiel pour les sites web traitant des informations sensibles comme les banques, les achats en ligne et les données personnelles.
+
+## Principales différences
+
+- 1.Chiffrement: HTTP ne chiffre pas les données, tandis que HTTPS utilise SSL/TLS pour les chiffrer.
+- 2.Sécurité: HTTPS assure l'intégrité et la confidentialité des données, empêchant les altérations et les écoutes.
+- 3.Numéro de port: HTTP utilise généralement le port 80, tandis que HTTPS utilise le port 443.
+- 4.Certificat requis: HTTPS nécessite un certificat numérique (certificat SSL/TLS) émis par une autorité de certification de confiance.
+
+## Comprendre la structure HTTP
+
+## Structure d'une requête HTTP
+- 1.Ligne de requête: Contient la méthode (ex. GET, POST), le chemin vers la ressource, et la version HTTP. Exemple : GET /index.html HTTP/1.1
+- 2.En-têtes: Fournissent des informations supplémentaires sur la requête. Exemples d'en-têtes :
+- 3.Host: www.exemple.com
+- 4.User-Agent: Mozilla/5.0
+- 5.Accept: text/html
+- 6.Corps: (Optionnel) Utilisé avec des méthodes comme POST pour envoyer des données au serveur.
+
+## Structure d'une réponse HTTP
+- 1.Ligne de statut: Contient la version HTTP, le code de statut, et la phrase de raison. Exemple : HTTP/1.1 200 OK
+- 2.En-têtes: Fournissent des informations supplémentaires sur la réponse. Exemples d'en-têtes :
+- 3.Content-Type: text/html
+- 4.Content-Length: 342
+- 5.Set-Cookie: sessionId=abc123
+- 6.Corps: Le contenu réel de la réponse, tel que HTML, JSON, ou des données d'image.
+
+## Inspection du trafic HTTP
+Utilisation des outils de développement du navigateur (Inspecter l'élément > Onglet Réseau) :
+
+## Exemple de requête :
+- 1.URL de la requête: http://www.exemple.com/index.html
+- 2.Méthode de la requête: GET
+- 3.Code de statut: 200 OK
+- 4.En-têtes de la requête: Host, User-Agent, Accept
+- 5.En-têtes de la réponse: Content-Type, Content-Length
+
+## Exemple de réponse:
+- 1.Code de statut: 200 OK
+- 2.Content-Type: text/html
+- 3.Corps: <html><head>...</head><body>...</body></html>
+
+## Méthodes HTTP courantes
+
+## GET
+
+- 1.Description: Récupère des données du serveur.
+- 2.Cas d'utilisation: Récupération d'une page web ou de données depuis une API.
+
+## POST
+
+- 1.Description: Soumet des données à traiter à une ressource spécifiée.
+- 2.Cas d'utilisation: Soumission d'un formulaire sur une page web.
+
+## PUT
+
+- 1.Description: Met à jour une ressource existante avec de nouvelles données.
+- 2.Cas d'utilisation: Mise à jour des informations d'un utilisateur dans une base de données.
+
+## DELETE
+
+- 1.Description: Supprime la ressource spécifiée.
+- 2.Cas d'utilisation: Suppression d'un utilisateur d'une base de données.
+- 3.Codes de statut HTTP courants
+
+## 200 OK
+
+- 1.Description: La requête a réussi.
+- 2.Scénario: Récupération réussie d'une page web ou soumission d'un formulaire.
+
+## 301 Moved Permanently
+
+- 1.Description: La ressource demandée a été déplacée de façon permanente à une nouvelle URL.
+- 2.Scénario: Redirection des utilisateurs d'une ancienne URL vers une nouvelle.
+
+## 404 Not Found
+
+- 1.Description: Le serveur ne trouve pas la ressource demandée.
+- 2.Scénario: Lorsqu'un utilisateur essaie d'accéder à une page inexistante.
+
+## 500 Internal Server Error
+
+- 1.Description: Le serveur a rencontré une condition inattendue.
+- 2.Scénario: Lorsqu'il y a une erreur côté serveur empêchant de satisfaire la requête.
+
+## 403 Forbidden
+
+- 1.Description: Le serveur comprend la requête mais refuse de l'autoriser.
+- 2.Scénario: Lorsqu'un utilisateur essaie d'accéder à une page restreinte sans les permissions appropriées.
