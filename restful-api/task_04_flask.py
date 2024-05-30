@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""contains the Develop a Simple API using Python with Flask"""
 
 
 from flask import Flask, jsonify, request
@@ -13,21 +14,25 @@ users = {
 
 @app.route('/')
 def home():
+    """contains the home"""
     return "Welcome to the Flask API!"
 
 
 @app.route('/data')
 def get_data():
+    """contais the data"""
     return jsonify(list(users.keys()))
 
 
 @app.route('/status')
 def status():
+    """contais the status"""
     return "OK"
 
 
 @app.route('/users/<username>')
 def get_user(username):
+    """contais the get_user"""
     user = users.get(username)
     if user:
         return jsonify(user)
@@ -37,6 +42,7 @@ def get_user(username):
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
+    """contains the add_user"""
     user_data = request.json
     username = user_data.get('username')
     if username and username not in users:
@@ -49,6 +55,6 @@ def add_user():
     else:
         return jsonify({"error": "Invalid data or user already exists"}), 400
 
-
+"""contais the name"""
 if __name__ == '__main__':
     app.run(debug=True)
