@@ -55,6 +55,7 @@ def add_user():
     else:
         return jsonify({"error": "Invalid data or user already exists"}), 400
 
+
 """contais the name"""
 if __name__ == '__main__':
     app.run(debug=True)
