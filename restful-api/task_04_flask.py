@@ -1,7 +1,11 @@
 #!/usr/bin/python3
 """Développer une API simple en utilisant Python avec Flask"""
 
+
 from flask import Flask, jsonify, request
+import socketserver
+from http.server import SimpleHTTPRequestHandler
+
 
 app = Flask(__name__)
 
@@ -33,7 +37,7 @@ def status():
 
 @app.route('/users/<username>')
 def get_user(username):
-    """Route pour obtenir les informations d'un utilis par nom d'utilisateur"""
+    """Route pour obtenir les informations d'un utili par nom d'utilisateur"""
     user = users.get(username)
     if user:
         return jsonify(user)
@@ -52,11 +56,34 @@ def add_user():
             "age": user_data.get('age'),
             "city": user_data.get('city')
         }
-        return jsonify({"message": "Utilisat ajouté", "user": users[username]})
+        return jsonify({"message": "Utilisa ajouté", "user": users[username]})
     else:
-        return jsonify({"error": "Données invalides ou utilisa exi déjà"}), 400
+        return jsonify({"error": "Données invalides ou util existe déjà"}), 400
 
 
-if __name__ == '__main__':
-    # Démarrer le serveur de développement Flask
-    app.run(debug=True)
+if __name__ == "__main__":
+    import os
+    from werkzeug.serving import run_simple
+
+    PORT = int(os.environ.get('PORT', 8000))  # Vous pouvez définir le port ici
+
+    # Démarrer le serveur Flask en utilisant werkzeug
+    run_simple('0.0.0.0', PORT, app)
+
+
+    # Utiliser socketserver pour servir les requêtes HTTP
+    class FlaskRequestHandler(SimpleHTTPRequestHandler):
+        """contais the class"""
+        def do_GET(self):
+            """contais the do_get"""
+            if self.path.startswith('/'):
+                self.send_response(200)
+                self.send_header('Content-type', 'text/html')
+                self.end_headers()
+                self.wfile.write(b"Bienvenue dans l'API Flask via SimpleHTTPRequestHandler!")
+            else:
+                super().do_GET()
+
+    with socketserver.TCPServer(("", PORT), FlaskRequestHandler) as httpd:
+        print(f"Serving on port {PORT}")
+        httpd.serve_forever()
