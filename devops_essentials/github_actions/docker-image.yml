@@ -1,6 +1,6 @@
-name: Construire et Pousser l'Image Docker
+name: Construire et Pousser l'Image Dockerfile
 
-on: 
+on:
   push:
     branches:
       - main
