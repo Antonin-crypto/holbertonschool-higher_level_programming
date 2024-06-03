@@ -1,4 +1,5 @@
-## Docker est une plateforme open source qui automatise le déploiement d'applications dans des conteneurs logiciels. Pour bien comprendre Docker, voici les concepts de base expliqués simplement :
+<h1 align="center">Docker 👋</h1>
+une plateforme open source qui automatise le déploiement d'applications dans des conteneurs logiciels. Pour bien comprendre Docker, voici les concepts de base expliqués simplement :
 
 ## Qu'est-ce qu'un conteneur ?
 - Un conteneur est une unité standard de logiciel qui emballe le code et toutes ses dépendances pour que l'application fonctionne rapidement et de manière fiable d'un environnement informatique à un autre. Il est plus léger qu'une machine virtuelle (VM) car il partage le noyau du système d'exploitation avec d'autres conteneurs, mais reste isolé au niveau des processus et du réseau.
