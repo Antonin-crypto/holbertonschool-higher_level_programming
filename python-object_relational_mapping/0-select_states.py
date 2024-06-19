@@ -1,17 +1,17 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """Module listing all states from the database"""
 
 import MySQLdb
-import sys
+from sys import argv
 
 if __name__ == "__main__":
     # Connect to the database
     db = MySQLdb.connect(
           host="localhost",
           port=3306,
-          user=sys.argv[1],
-          passwd="",
-          db=sys.argv[3],
+          user=argv[1],
+          passwd=argv[2],
+          db=argv[3],
           )
 
     # Create a cursor object to interact with the database
