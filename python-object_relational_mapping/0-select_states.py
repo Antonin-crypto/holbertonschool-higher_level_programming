@@ -6,7 +6,7 @@ from sys import argv
 
 if __name__ == "__main__":
     # Connect to the database
-    conn = MySQLdb.connect(
+    db = MySQLdb.connect(
           host="localhost",
           port=3306,
           user=argv[1],
@@ -15,7 +15,7 @@ if __name__ == "__main__":
           )
 
     # Create a cursor object to interact with the database
-    cur = conn.cursor()
+    cur = db.cursor()
 
     # Execute the SQL query to select all states ordered by their ID
     cur.execute("""SELECT * FROM states ORDER BY id""")
@@ -29,4 +29,4 @@ if __name__ == "__main__":
 
     # Close the cursor and connection
     cur.close()
-    conn.close()
+    db.close()
