@@ -2,28 +2,16 @@
 """Module listing all states from the database"""
 
 import MySQLdb
-import sys
+from sys import argv
 
-
-def list_states(mysql_username, mysql_password, db_name):
-    """
-    Connect to the MySQL database and list all states ordered by their ID.
-
-    Args:
-        mysql_username (str): The username to connect to the MySQL database.
-        mysql_password (str): The password to connect to the MySQL database.
-        db_name (str): The name of the database to connect to.
-
-    Returns:
-        None
-    """
+if __name__ == "__main__":
     # Connect to the database
     conn = MySQLdb.connect(
           host="localhost",
           port=3306,
-          user=mysql_username,
-          passwd=mysql_password,
-          db=db_name,
+          user=argv[1],
+          passwd=argv[2],
+          db=argv[3],
           charset="utf8"
           )
 
@@ -43,12 +31,3 @@ def list_states(mysql_username, mysql_password, db_name):
     # Close the cursor and connection
     cur.close()
     conn.close()
-
-
-if __name__ == "__main__":
-    # Get MySQL credentials and database name from command-line arguments
-    mysql_username = sys.argv[1]
-    mysql_password = sys.argv[2]
-    db_name = sys.argv[3]
-    # List states from the database
-    list_states(mysql_username, mysql_password, db_name)
