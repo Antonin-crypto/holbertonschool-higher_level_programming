@@ -29,7 +29,8 @@ if __name__ == "__main__":
 
     # Print each row
     for row in query_rows:
-        print(row)
+        if row[1] == argv[4]:
+            print(row)
 
     # Close the cursor and connection
     cur.close()
