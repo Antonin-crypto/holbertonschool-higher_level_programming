@@ -19,12 +19,14 @@ if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
                            format(username, password, database))
 
+
     # Create a configured "Session" class
     Session = sessionmaker(bind=engine)
 
+
     # Create a Session
     session = Session()
-
+    Base.metadata.create_all(engine)
     # Query for State objects containing the letter 'a', sorted by id
     states_with_a = session.query(State)\
         .filter(State.name.like('%a%'))\
