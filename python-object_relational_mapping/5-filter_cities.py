@@ -20,7 +20,7 @@ if __name__ == "__main__":
                  WHERE cities.state_id = (SELECT id
                     FROM states
                     WHERE name = %(state)s)
-                ORDER BY cities.id ASC""", {"state": argv[4]})
+                ORDER BY cities.id ASC""", {argv[4],})
 
     # Fetch all the rows returned by the query
     query_rows = cur.fetchall()
