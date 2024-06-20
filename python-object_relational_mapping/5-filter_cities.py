@@ -26,7 +26,6 @@ if __name__ == "__main__":
 
     # Print each row
     for row in range(len(query_rows)):
-        print(row)
         query_rows[row] = str(query_rows[row][0])
         print(', '.join(query_rows))
     # Close the cursor and connection
