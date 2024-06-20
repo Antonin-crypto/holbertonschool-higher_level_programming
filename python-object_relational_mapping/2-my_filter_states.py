@@ -11,13 +11,10 @@ if __name__ == "__main__":
     # Create a cursor object to interact with the database
     cur = db.cursor()
 
-    # Create the SQL query to select states with the name matching the argument
-    query = "SELECT * FROM states WHERE name = '{}' ORDER BY id ASC".format
-    (argv[4])
-
     # Execute the SQL query with parameterized input
-    cur.execute(query)
-
+    cur.execute(
+        """SELECT * FROM states WHERE name = '{}' ORDER BY id ASC"""
+        .format(argv[4]))
     # Fetch all the rows returned by the query
     query_rows = cur.fetchall()
 
