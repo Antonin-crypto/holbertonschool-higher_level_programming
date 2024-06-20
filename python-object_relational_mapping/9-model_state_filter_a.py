@@ -29,8 +29,7 @@ if __name__ == "__main__":
     # Query for State objects containing the letter 'a', sorted by id
     states_with_a = session.query(State)\
         .filter(State.name.like('%a%'))\
-        .order_by(State.id.asc())\
-        .all()
+        .order_by(State.id.asc())
 
     if states_with_a:
         for state in states_with_a:
