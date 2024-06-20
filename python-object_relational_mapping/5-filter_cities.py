@@ -17,17 +17,15 @@ if __name__ == "__main__":
     # Create a cursor object to interact with the database
     cur = db.cursor()
 
-    # Create the SQL query to sele all citi of the given state orde by their ID
-    query = """
-    SELECT cities.id, cities.name
-    FROM cities
-    JOIN states ON cities.state_id = states.id
-    WHERE states.name = %s
-    ORDER BY cities.id ASC
-    """
 
     # Execute the SQL query with parameterized input to prevent SQL injection
-    cur.execute(query, (argv[4],))
+    cur.execute("""SELECT name
+                FROM cities
+                 WHERE cities.state_id = (SELECT id
+                    FROM states
+                    WHERE name = %(state)s)
+                ORDER BY cities.id ASC""",
+        {"state": argv[4]})
 
     # Fetch all the rows returned by the query
     query_rows = cur.fetchall()
