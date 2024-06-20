@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     if states_with_a:
         for state in states_with_a:
-            print("{}".format(state.id) + ": " + "{}".format(state.name))
+            print("{}: {}".format(state.id, state.name))
     else:
         print("Nothing")
 
