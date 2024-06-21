@@ -5,6 +5,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from model_state import Base
 
+
 class City(Base):
     """City class to represent cities table"""
     __tablename__ = 'cities'
