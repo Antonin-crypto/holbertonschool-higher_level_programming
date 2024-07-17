@@ -1,15 +1,19 @@
 #!usr/bin/python3
 
+
 from flask import Flask, render_template, request
 import json
 import csv
 import sqlite3
 
+
 app = Flask(__name__)
+
 
 def read_json():
     with open('products.json', 'r') as f:
         return json.load(f)
+
 
 def read_csv():
     products = []
@@ -20,6 +24,7 @@ def read_csv():
             row['price'] = float(row['price'])
             products.append(row)
     return products
+
 
 def read_sql():
     conn = sqlite3.connect('products.db')
@@ -37,6 +42,7 @@ def read_sql():
         })
     return products
 
+
 @app.route('/products')
 def products():
     source = request.args.get('source')
@@ -52,11 +58,14 @@ def products():
         return render_template('product_display.html', error="Wrong source")
 
     if product_id:
-        products = [product for product in products if product['id'] == product_id]
+        products = [
+            product for product in products if product['id'] == product_id]
         if not products:
-            return render_template('product_display.html', error="Product not found")
+            return render_template(
+                'product_display.html', error="Product not found")
 
     return render_template('product_display.html', products=products)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
