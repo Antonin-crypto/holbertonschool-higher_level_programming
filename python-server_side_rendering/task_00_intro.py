@@ -1,57 +1,51 @@
 #!/usr/bin/python3
 
-
 import os
-
 
 def generate_invitations(template, attendees):
     try:
-        # Vérifier que le modèle est une chaîne de caractères
+        # Check if template is a string
         if not isinstance(template, str):
-            raise ValueError("Template is not a string")
+            raise TypeError("Template should be a string.")
 
-        # Vérifier que les participants sont une liste de dictionnaires
-        if not isinstance(attendees, list) or not all(isinstance(att, dict)
-                                                      for att in attendees):
-            raise ValueError("Attendees sould be list of dictionnaries")
+        # Check if attendees is a list of dictionaries
+        if not isinstance(attendees, list) or not all(isinstance(attendee, dict) for attendee in attendees):
+            raise TypeError("Attendees should be a list of dictionaries.")
 
-        # Vérifier que le modèle n'est pas vide
-        if template.strip() == "":
-            print("Template is empty, no output files generated")
-            return
+        # Check if template is empty
+        if not template.strip():
+            raise ValueError("Template is empty, no output files generated.")
 
-        # Vérifier que la liste des participants n'est pas vide
+        # Check if attendees list is empty
         if not attendees:
-            print("No data prvided, no output file generated")
-            return
+            raise ValueError("No data provided, no output files generated.")
 
-        # Traiter chaque participant
-        for i, attendee in enumerate(attendees, start=1):
-            # Remplacer les valeurs manquantes par "N/A"
-            name = attendee.get("name", "N/A")
-            event_title = attendee.get("event_title", "N/A")
-            event_date = attendee.get("event_date", "N/A")
-            event_location = attendee.get("event_location", "N/A")
+        # Iterate over each attendee
+        for idx, attendee in enumerate(attendees, start=1):
+            # Create a copy of the template
+            invitation = template[:]
 
-        # Remplacer les espaces réservés par les valeurs du dictionnaire
-            invitation = template.format(
-                name=name,
-                event_title=event_title,
-                event_date=event_date if event_date else "N/A",
-                event_location=event_location
-            )
+            # Replace placeholders with values from the attendee dictionary
+            for placeholder in ["name", "event_title", "event_date", "event_location"]:
+                value = attendee.get(placeholder, "N/A")
+                if value is None:
+                    value = "N/A"
+                invitation = invitation.replace(f"{{{placeholder}}}", value)
 
-            # Nommer le fichier de sortie
-            output_filename = "output_{}.txt".format(i)
+            # Define the output file name
+            output_filename = f"output_{idx}.txt"
 
-            # Écrire le contenu dans le fichier de sortie
-            try:
-                with open(output_filename, 'w') as output_file:
-                    output_file.write(invitation)
-                print("Generated {}".format(output_filename))
-            except IOError as e:
-                print("Error writing file {}: {}".format(output_filename, e))
+            # Write the invitation to the output file
+            with open(output_filename, 'w') as output_file:
+                output_file.write(invitation)
+
+        print(f"{len(attendees)} invitation files generated.")
+
+    except TypeError as e:
+        print(f"Error: {e}")
+
     except ValueError as e:
-        print("{ValueError: {}".format(e))
+        print(f"Error: {e}")
+
     except Exception as e:
-        print("An unexpected error occurred: {}".format(e))
+        print(f"An unexpected error occurred: {e}")
